@@ -1,1 +1,1 @@
-# salmoncookies
+# cookie-stand
