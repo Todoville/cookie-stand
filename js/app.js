@@ -28,7 +28,7 @@ var pikePlaceMarket = {
     }
     //Displays total customers and total cookies sold
     var totalLi = document.createElement('li');
-    totalLi.textContent = ' Total Cookies Sold = ' + total;
+    totalLi.textContent = ' Total Cookies Sold: ' + total;
     ulEl.appendChild(totalLi);
   }
 
@@ -53,7 +53,7 @@ var seaTac = {
     }
 
     var totalLi = document.createElement('li');
-    totalLi.textContent = ' Total Cookies Sold ' + total;
+    totalLi.textContent = ' Total Cookies Sold: ' + total;
     ulEl.appendChild(totalLi);
   }
 };
@@ -76,7 +76,53 @@ var seaCenter = {
     }
 
     var totalLi = document.createElement('li');
-    totalLi.textContent = 'Total Cookies Sold ' + total;
+    totalLi.textContent = 'Total Cookies Sold: ' + total;
+    ulEl.appendChild(totalLi);
+  }
+};
+
+var capHill = {
+  minCustHour: 20,
+  maxCustHour: 38,
+  avgCookie: 2.3,
+
+  renderCookies: function() {
+    var ulEl = document.getElementById('capHill');
+    var total = 0;
+    for(var i = 0; i < hours.length; i ++) {
+      var liEl = document.createElement('li');
+      var randomCust = ranNo(this.minCustHour, this.maxCustHour);
+      var hourCookies = Math.floor(randomCust * this.avgCookie);
+      liEl.textContent = hours[i] + ' ' + hourCookies;
+      total += hourCookies;
+      ulEl.appendChild(liEl);
+    }
+
+    var totalLi = document.createElement('li');
+    totalLi.textContent = 'Total Cookies Sold: ' + total;
+    ulEl.appendChild(totalLi);
+  }
+};
+
+var alki = {
+  minCustHour: 2,
+  maxCustHour: 16,
+  avgCookie: 4.6,
+
+  renderCookies: function() {
+    var ulEl = document.getElementById('alki');
+    var total = 0;
+    for(var i = 0; i < hours.length; i ++) {
+      var liEl = document.createElement('li');
+      var randomCust = ranNo(this.minCustHour, this.maxCustHour);
+      var hourCookies = Math.floor(randomCust * this.avgCookie);
+      liEl.textContent = hours[i] + ' ' + hourCookies;
+      total += hourCookies;
+      ulEl.appendChild(liEl);
+    }
+
+    var totalLi = document.createElement('li');
+    totalLi.textContent = 'Total Cookies Sold: ' + total;
     ulEl.appendChild(totalLi);
   }
 };
@@ -84,6 +130,7 @@ var seaCenter = {
 pikePlaceMarket.renderCookies();
 seaTac.renderCookies();
 seaCenter.renderCookies();
-
+capHill.renderCookies();
+alki.renderCookies();
 
 
