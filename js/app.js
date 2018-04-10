@@ -20,24 +20,70 @@ var pikePlaceMarket = {
     var total = 0;
     for (var i = 0; i < hours.length; i++) {
       var liEl = document.createElement('li');
-      var randomNumber = ranNo(this.minCustHour, this.maxCustHour);
-      liEl.textContent = hours[i] + ' ' + randomNumber;
-      total += randomNumber;
+      var randomCust = ranNo(this.minCustHour, this.maxCustHour);
+      var hourCookies = Math.floor(randomCust * this.avgCookie);
+      liEl.textContent = hours[i] + ' ' + hourCookies;
+      total += hourCookies;
       ulEl.appendChild(liEl);
     }
     //Displays total customers and total cookies sold
     var totalLi = document.createElement('li');
-    totalLi.textContent = ' Total Customers ' + total;
+    totalLi.textContent = ' Total Cookies Sold = ' + total;
     ulEl.appendChild(totalLi);
   }
 
 
 };
 
-var 
+var seaTac = {
+  minCustHour: 3,
+  maxCustHour: 24,
+  avgCookie: 1.2,
+
+  renderCookies: function() {
+    var ulEl = document.getElementById('seaTac');
+    var total = 0;
+    for( var i = 0; i < hours.length; i++) {
+      var liEl = document.createElement('li');
+      var randomCust = ranNo(this.minCustHour, this.maxCustHour);
+      var hourCookies = Math.floor(randomCust * this.avgCookie);
+      liEl.textContent = hours[i] + ' ' + hourCookies;
+      total += hourCookies;
+      ulEl.appendChild(liEl);
+    }
+
+    var totalLi = document.createElement('li');
+    totalLi.textContent = ' Total Cookies Sold ' + total;
+    ulEl.appendChild(totalLi);
+  }
+};
+
+var seaCenter = {
+  minCustHour: 11,
+  maxCustHour: 38,
+  avgCookie: 3.7,
+
+  renderCookies: function() {
+    var ulEl = document.getElementById('seaCenter');
+    var total = 0;
+    for(var i = 0; i < hours.length; i++) {
+      var liEl = document.createElement('li');
+      var randomCust = ranNo(this.minCustHour, this.maxCustHour);
+      var hourCookies = Math.floor(randomCust * this.avgCookie);
+      liEl.textContent = hours[i] + ' ' + hourCookies;
+      total += hourCookies;
+      ulEl.appendChild(liEl);
+    }
+
+    var totalLi = document.createElement('li');
+    totalLi.textContent = 'Total Cookies Sold ' + total;
+    ulEl.appendChild(totalLi);
+  }
+};
 
 pikePlaceMarket.renderCookies();
-
+seaTac.renderCookies();
+seaCenter.renderCookies();
 
 
 
