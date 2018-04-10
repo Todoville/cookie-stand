@@ -8,32 +8,38 @@ function ranNo(min, max) {
   return Math.floor(Math.random() * (max-min)) + min;
 }
 
-//creating the Pike Place Object
-var pikePlaceMarket = {
-  minCustHour : 23,
-  maxCustHour : 65,
-  avgCookie : 6.3,
-
-  //function to randomize customers given Pat's estimates
-  renderCookies: function() {
-    var ulEl = document.getElementById('pike');
-    var total = 0;
-    for (var i = 0; i < hours.length; i++) {
-      var liEl = document.createElement('li');
-      var randomCust = ranNo(this.minCustHour, this.maxCustHour);
-      var hourCookies = Math.floor(randomCust * this.avgCookie);
-      liEl.textContent = hours[i] + ' ' + hourCookies;
-      total += hourCookies;
-      ulEl.appendChild(liEl);
-    }
-    //Displays total customers and total cookies sold
-    var totalLi = document.createElement('li');
-    totalLi.textContent = ' Total Cookies Sold: ' + total;
-    ulEl.appendChild(totalLi);
+//function to randomize customers given Pat's estimates
+Location.prototype.renderCookies = function() {
+  var ulEl = document.getElementById('pike');
+  var total = 0;
+  for (var i = 0; i < hours.length; i++) {
+    var liEl = document.createElement('li');
+    var randomCust = ranNo(this.minCustHour, this.maxCustHour);
+    var hourCookies = Math.floor(randomCust * this.avgCookie);
+    liEl.textContent = hours[i] + ' ' + hourCookies;
+    total += hourCookies;
+    ulEl.appendChild(liEl);
   }
+  //Displays total customers and total cookies sold
+  var totalLi = document.createElement('li');
+  totalLi.textContent = ' Total Cookies Sold: ' + total;
+  ulEl.appendChild(totalLi);
+}
 
+//creating the constructor function
+function Location(address, minCustHour, maxCustHour, avgCookie) {
+  this.address = address;
+  this.minCustHour = minCustHour;
+  this.maxCustHour = maxCustHour;
+  this.avgCookie = avgCookie;
 
 };
+
+//creating the Pike Place Object
+var pikePlaceMarket =  new Location('1st and Pike', 23, 65, 6.3)
+
+pikePlaceMarket.renderCookies();
+
 
 var seaTac = {
   minCustHour: 3,
