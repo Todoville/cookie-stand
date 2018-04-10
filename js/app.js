@@ -8,29 +8,33 @@ function ranNo(min, max) {
   return Math.floor(Math.random() * (max-min)) + min;
 }
 
+//creating the Pike Place Object
 var pikePlaceMarket = {
   minCustHour : 23,
   maxCustHour : 65,
   avgCookie : 6.3,
 
+  //function to randomize customers given Pat's estimates
   renderCookies: function() {
     var ulEl = document.getElementById('pike');
     var total = 0;
     for (var i = 0; i < hours.length; i++) {
       var liEl = document.createElement('li');
       var randomNumber = ranNo(this.minCustHour, this.maxCustHour);
-      liEl.textContent = randomNumber;
+      liEl.textContent = hours[i] + ' ' + randomNumber;
       total += randomNumber;
       ulEl.appendChild(liEl);
     }
+    //Displays total customers and total cookies sold
     var totalLi = document.createElement('li');
-    totalLi.textContent = total;
+    totalLi.textContent = ' Total Customers ' + total;
     ulEl.appendChild(totalLi);
   }
 
 
-
 };
+
+var 
 
 pikePlaceMarket.renderCookies();
 
