@@ -83,3 +83,16 @@ seaTac.renderCookies();
 seaCenter.renderCookies();
 capHill.renderCookies();
 alki.renderCookies();
+
+//create the js form events
+
+function cookieFormHandler(e) {
+  e.preventDefault();
+  console.log('ya shit worked my dude');
+  var formElement = event.target;
+  var userRow = new CookieLocation(formElement.address.value, formElement.minCust.value, formElement.maxCust.value, formElement.avgCookie.value);
+
+}
+
+var addressElement = document.getElementById('hourly-sales-table');
+addressElement.addEventListener('submit', cookieFormHandler);
