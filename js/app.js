@@ -91,6 +91,8 @@ function cookieFormHandler(e) {
   console.log('ya shit worked my dude');
   var formElement = event.target;
   var userRow = new CookieLocation(formElement.address.value, formElement.minCust.value, formElement.maxCust.value, formElement.avgCookie.value);
+  console.log(userRow);
+  userRow.renderCookies();
 
 }
 
