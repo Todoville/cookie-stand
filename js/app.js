@@ -23,9 +23,11 @@ function CookieLocation(address, minCustHour, maxCustHour, avgCookie) {
 function hoursHeader() {
   var tableHeaderRow = document.createElement('tr');
 
+  //empty space above first location display
   var blankHeader = document.createElement('th');
   tableHeaderRow.appendChild(blankHeader);
 
+  //hours in header
   for(var i=0; i < hours.length; i++) {
     var hourHeadText = document.createElement('th');
     hourHeadText.textContent = hours[i];
@@ -33,7 +35,7 @@ function hoursHeader() {
   }
 
   tableEl.appendChild(tableHeaderRow);
-};
+}
 
 
 //function to randomize customers and average cookies sold per hour, given Pat's estimates
@@ -57,7 +59,7 @@ CookieLocation.prototype.renderCookies = function() {
     newRow.appendChild(dataEl);
   }
 
-//displays the data and row
+  //displays the data and row
   tableEl.appendChild(newRow);
 
   //Displays total customers and total cookies sold
