@@ -1,19 +1,51 @@
-h1 {
-  font-family: 'Abril Fatface', cursive;
-  font-size: 56px;
-  text-align: center;
-  background-color: powderblue;
-  
-}
-body {
-  background-color: salmon;
-}
-img {
-  margin-left: 22%;
-}
-#tableOfContents {
-  background-color: orangered;
-  font-size: 42px;
-  color: white
+  h1 {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 56px;
+    text-align: center;
+    background-color: #FB1861;
+    
+  }
+  body {
+    background-color: salmon;
+  }
+  #salmonLogo {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+  #tableOfContents {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: tomato;
+    font-size: 42px;
+    color: white;
+    width: 200px;
+    height: 600px;
+    position: relative;
+    border-color: #91163D;
+    border-width: 15px;
+    border-style: ridge;
+    top: -400px;
+    
+  }
+  li:last-child {
+    font-size: 15px;
+    margin: 30px 0px 0px 0px;
+    list-style: none;
+  }
+  li {
+    margin: 15px 0px 0px 0px;
+  }
 
-}
+  #cookieCoffee {
+    height: 400px;
+    width: 500px;
+    position: relative;
+    right: -400px;
+  }
+
+  #mainParagraph {
+    position: relative;
+    bottom: 550px;
+    max-width: 600px;
+    left: 400px;
+  }
