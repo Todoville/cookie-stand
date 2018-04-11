@@ -8,7 +8,12 @@ h1 {
 body {
   background-color: salmon;
 }
+img {
+  margin-left: 22%;
+}
+#tableOfContents {
+  background-color: orangered;
+  font-size: 42px;
+  color: white
 
- {
-  
 }
