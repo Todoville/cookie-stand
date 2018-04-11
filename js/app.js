@@ -20,14 +20,19 @@ function CookieLocation(address, minCustHour, maxCustHour, avgCookie) {
 
 }
 
-CookieLocation.prototype.hoursHeader = function() {
-  for(var i=0; i < hours.length; i++) {
-    var hourHead = document.createElement('th');
-    hourHead.textContent = hours[i];
-    tableEl.appendChild(hourHead);
+function hoursHeader() {
+  var tableHeaderRow = document.createElement('tr');
 
+  var blankHeader = document.createElement('th');
+  tableHeaderRow.appendChild(blankHeader);
+
+  for(var i=0; i < hours.length; i++) {
+    var hourHeadText = document.createElement('th');
+    hourHeadText.textContent = hours[i];
+    tableHeaderRow.appendChild(hourHeadText);
   }
 
+  tableEl.appendChild(tableHeaderRow);
 };
 
 
@@ -35,19 +40,30 @@ CookieLocation.prototype.hoursHeader = function() {
 CookieLocation.prototype.renderCookies = function() {
   var total = 0;
   var newRow = document.createElement('tr');
-  tableEl.appendChild(newRow);
+  var tableName = document.createElement('td');
+
+  tableName.textContent = this.address;
+
+
+  newRow.appendChild(tableName);
+
+  //does the math for the data in table
   for (var i = 0; i < hours.length; i++) {
     var dataEl = document.createElement('td');
     var randomCust = ranNo(this.minCustHour, this.maxCustHour);
     var hourCookies = Math.floor(randomCust * this.avgCookie);
     dataEl.textContent = hourCookies;
     total += hourCookies;
-    tableEl.appendChild(dataEl);
+    newRow.appendChild(dataEl);
   }
+
+//displays the data and row
+  tableEl.appendChild(newRow);
+
   //Displays total customers and total cookies sold
   var totalTd = document.createElement('td');
   totalTd.textContent = ' Total Cookies Sold: ' + total;
-  tableEl.appendChild(totalTd);
+  newRow.appendChild(totalTd);
 };
 
 //creating the instances
@@ -58,7 +74,8 @@ var capHill = new CookieLocation('Capitol Hill', 20, 38, 2.3);
 var alki = new CookieLocation('Alki Beach', 2, 16, 4.6);
 
 //call the instances
-alki.hoursHeader();
+hoursHeader();
+
 pikePlaceMarket.renderCookies();
 seaTac.renderCookies();
 seaCenter.renderCookies();
