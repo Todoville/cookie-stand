@@ -48,7 +48,7 @@ CookieLocation.prototype.renderCookies = function() {
 
   //does the math for the data in table
   for (var i = 0; i < hours.length; i++) {
-   
+
     var dataEl = document.createElement('td');
     var randomCust = ranNo(this.minCustHour, this.maxCustHour);
     var hourCookies = Math.floor(randomCust * this.avgCookie);
@@ -86,9 +86,8 @@ alki.renderCookies();
 
 function cookieFormHandler(e) {
   e.preventDefault();
-  console.log('ya shit worked my dude');
   var formElement = event.target;
-  var userRow = new CookieLocation(formElement.address.value, formElement.minCust.value, formElement.maxCust.value, formElement.avgCookie.value);
+  var userRow = new CookieLocation(formElement.address.value, Number(formElement.minCust.value), Number(formElement.maxCust.value), Number(formElement.avgCookie.value));
   console.log(userRow);
   userRow.renderCookies();
 
