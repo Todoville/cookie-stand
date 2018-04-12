@@ -25,12 +25,13 @@
     border-width: 15px;
     border-style: ridge;
     top: -400px;
-    
+    text-align: center;
   }
   li:last-child {
     font-size: 15px;
     margin: 30px 0px 0px 0px;
     list-style: none;
+    text-align: left;
   }
   li {
     margin: 15px 0px 0px 0px;

@@ -1,0 +1,67 @@
+body {
+  font-family: 'Abril Fatface', cursive;
+  background-color: salmon;
+}
+
+h1 {
+  margin-top: 10px;
+  padding-top: 10px;
+  font-size: 56px;
+  text-align: center;
+  background-color: #FB1861;
+}
+h2 {
+
+  font-size: 32px;
+  text-align: center;
+}
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  background-color: #FB1861;
+  width: 1000px;
+  position: relative;
+  left: 10px;
+  bottom: 620px;
+}
+th {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+
+
+}
+tr:nth-child(even) {
+  background-color: salmon;
+}
+
+td {
+  font-weight: bold;
+  font-size: 25px;
+  padding: 7px 10px 10px 10px;
+
+}
+#back {
+  padding: 10px 10px 30px 10px;
+}
+#table-explain {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: tomato;
+  font-size: 30px;
+  color: white;
+  width: 200px;
+  height: 600px;
+  position: relative;
+  border-color: #91163D;
+  border-width: 15px;
+  border-style: ridge;
+  top: 0px;
+  left: 1200px;
+  text-align: center;
+}
+#forms {
+  position: relative;
+  bottom: 500px;
+  font-size: 40px;
+}
+

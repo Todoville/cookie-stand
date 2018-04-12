@@ -43,14 +43,12 @@ CookieLocation.prototype.renderCookies = function() {
   var total = 0;
   var newRow = document.createElement('tr');
   var tableName = document.createElement('td');
-
   tableName.textContent = this.address;
-
-
   newRow.appendChild(tableName);
 
   //does the math for the data in table
   for (var i = 0; i < hours.length; i++) {
+
     var dataEl = document.createElement('td');
     var randomCust = ranNo(this.minCustHour, this.maxCustHour);
     var hourCookies = Math.floor(randomCust * this.avgCookie);
@@ -83,3 +81,17 @@ seaTac.renderCookies();
 seaCenter.renderCookies();
 capHill.renderCookies();
 alki.renderCookies();
+
+//create the js form events
+
+function cookieFormHandler(e) {
+  e.preventDefault();
+  var formElement = event.target;
+  var userRow = new CookieLocation(formElement.address.value, Number(formElement.minCust.value), Number(formElement.maxCust.value), Number(formElement.avgCookie.value));
+  console.log(userRow);
+  userRow.renderCookies();
+
+}
+
+var addressElement = document.getElementById('hourly-sales-table');
+addressElement.addEventListener('submit', cookieFormHandler);
