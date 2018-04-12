@@ -43,14 +43,12 @@ CookieLocation.prototype.renderCookies = function() {
   var total = 0;
   var newRow = document.createElement('tr');
   var tableName = document.createElement('td');
-
   tableName.textContent = this.address;
-
-
   newRow.appendChild(tableName);
 
   //does the math for the data in table
   for (var i = 0; i < hours.length; i++) {
+   
     var dataEl = document.createElement('td');
     var randomCust = ranNo(this.minCustHour, this.maxCustHour);
     var hourCookies = Math.floor(randomCust * this.avgCookie);
