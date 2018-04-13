@@ -1,7 +1,8 @@
 'use strict';
-
+var footerEl = document.getElementById('sales-total-footer');
 var tableEl = document.getElementById('hourlyAvgCookieTable');
 var allLocations = [];
+var twoDArray = [];
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
 function ranNo(min, max) {
@@ -45,6 +46,7 @@ CookieLocation.prototype.renderCookies = function() {
   var tableName = document.createElement('td');
   tableName.textContent = this.address;
   newRow.appendChild(tableName);
+  var rowData = [];
 
   //does the math for the data in table
   for (var i = 0; i < hours.length; i++) {
@@ -53,9 +55,12 @@ CookieLocation.prototype.renderCookies = function() {
     var randomCust = ranNo(this.minCustHour, this.maxCustHour);
     var hourCookies = Math.floor(randomCust * this.avgCookie);
     dataEl.textContent = hourCookies;
+    rowData.push(hourCookies);
     total += hourCookies;
     newRow.appendChild(dataEl);
   }
+
+  twoDArray.push(rowData);
 
   //displays the data and row
   tableEl.appendChild(newRow);
@@ -65,6 +70,20 @@ CookieLocation.prototype.renderCookies = function() {
   totalTd.textContent = ' Total Cookies Sold: ' + total;
   newRow.appendChild(totalTd);
 };
+
+var addColumn = function (arr) {
+  var total = 0;
+  var result = [];
+  for(var row = 0; row < arr[0].length; row++) {
+    for(var column = 0; column < arr.length; column++) {
+      total += arr[column][row];
+    }
+    result.push(total);
+    total = 0;
+  }
+  return result;
+};
+
 
 //creating the instances
 var pikePlaceMarket =  new CookieLocation('1st and Pike', 23, 65, 6.3);
@@ -82,6 +101,27 @@ seaCenter.renderCookies();
 capHill.renderCookies();
 alki.renderCookies();
 
+var totalsRow = addColumn(twoDArray);
+
+
+//function to create the totals row at the bottom of the table
+function totalsFirstCell () {
+  var newRow = document.createElement('tr');
+  var totalLabelCell = document.createElement('td');
+  totalLabelCell.textContent = 'Totals:';
+  newRow.appendChild(totalLabelCell);
+  for (var i = 0; i < hours.length; i++) {
+
+    var dataEl = document.createElement('td');
+    dataEl.textContent = totalsRow[i];
+    newRow.appendChild(dataEl);
+  }
+  footerEl.appendChild(newRow);
+}
+
+totalsFirstCell();
+
+
 //create the js form events
 
 function cookieFormHandler(e) {
@@ -90,6 +130,9 @@ function cookieFormHandler(e) {
   var userRow = new CookieLocation(formElement.address.value, Number(formElement.minCust.value), Number(formElement.maxCust.value), Number(formElement.avgCookie.value));
   console.log(userRow);
   userRow.renderCookies();
+  totalsRow = addColumn(twoDArray);
+  footerEl.innerHTML = '';
+  totalsFirstCell();
 
 }
 
