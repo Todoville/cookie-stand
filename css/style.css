@@ -46,10 +46,12 @@
   }
 
   #mainParagraph {
+    display: block;
     position: relative;
-    bottom: 550px;
+    bottom: 400px;
     max-width: 600px;
     left: 400px;
+    font-size: 20px;
   }
 
   li img {
